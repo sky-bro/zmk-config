@@ -1,0 +1,6 @@
+#+Title: k4i's split kbd
+
+* References
+
+- [[https://github.com/davidphilipbarr/Sweep][Sweep Repo]]
+- [[https://www.youtube.com/watch?v=VShLPvF693k][keymap I initially copied]]
