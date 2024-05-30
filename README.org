@@ -1,5 +1,27 @@
 #+Title: k4i's split kbd
 
+* Keymap
+
+screenshots taken from [[https://nickcoutsos.github.io/keymap-editor/][keymap editor]]
+
+#+caption: default layer
+[[file:images/default-layer.png]]
+
+#+caption: windows layer
+[[file:images/windows-layer.png]]
+
+#+caption: right layer
+[[file:images/right-layer.png]]
+
+#+caption: left layer
+[[file:images/left-layer.png]]
+
+#+caption: tri layer
+[[file:images/tri-layer.png]]
+
+#+caption: mouse layer
+[[file:images/mouse-layer.png]]
+
 * References
 
 - [[https://github.com/davidphilipbarr/Sweep][Sweep Repo]]
