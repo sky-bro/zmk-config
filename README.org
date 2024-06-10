@@ -1,5 +1,7 @@
 #+Title: k4i's split kbd
 
+[[./README-zh_CN.org][中文]] | English
+
 * Quick Start
 
 ** flash new firmware
@@ -9,7 +11,8 @@
 3. wait github action to build the firmware, then you download and decompress the zip file
 4. connect left or right half of keyboard you want to flash to your computer with use cable
 5. connect keyboard to a device with either usb or bluetooth.
-6. copy firmware to your half of keyboard (updating keymap and changing keyboard name do not have to flash the right half)
+6. left or right half enter bootloader with =&bootloader= key
+7. copy firmware to your half of keyboard (updating keymap and changing keyboard name do not have to flash the right half)
 
 ** My Keymap
 
