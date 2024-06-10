@@ -17,7 +17,7 @@
 ** 键位说明
 
 #+begin_quote
-screenshots taken from [[https://nickcoutsos.github.io/keymap-editor/][keymap editor]]
+截图来自[[https://nickcoutsos.github.io/keymap-editor/][keymap editor]]
 #+end_quote
 
 *** 字母
