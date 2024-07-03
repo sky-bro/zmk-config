@@ -94,6 +94,16 @@
             bindings = <&unlock>;
             key-positions = <9 19 29>;
         };
+
+        xc2lastApp {
+            bindings = <&kp LG(TAB)>;
+            key-positions = <22 23>;
+        };
+
+        er2lastPage {
+            bindings = <&kp LC(TAB)>;
+            key-positions = <3 2>;
+        };
     };
 
     macros {
@@ -112,10 +122,10 @@
 
         default_layer {
             bindings = <
-&kp Q             &kp W               &kp E           &kp R        &kp T        &kp Y      &kp U           &kp I            &kp O                &kp P
-&lt 5 A           &ht LEFT_CONTROL S  &ht LEFT_ALT D  &ht LGUI F   &kp G        &kp H      &ht RGUI J      &ht RIGHT_ALT K  &ht RIGHT_CONTROL L  &kp BSPC
-&ht LEFT_SHIFT Z  &kp X               &kp C           &kp V        &kp B        &kp N      &kp M           &kp COMMA        &kp DOT              &kp RIGHT_SHIFT
-                                                      &lt LEF TAB  &kp SPACE    &kp ENTER  &lt RIG DELETE
+&kp Q             &kp W               &kp E           &kp R        &kp T        &kp Y      &kp U              &kp I            &kp O                &kp P
+&lt 5 A           &ht LEFT_CONTROL S  &ht LEFT_ALT D  &ht LGUI F   &kp G        &kp H      &ht RGUI J         &ht RIGHT_ALT K  &ht RIGHT_CONTROL L  &kp BSPC
+&ht LEFT_SHIFT Z  &kp X               &kp C           &kp V        &kp B        &kp N      &kp M              &kp COMMA        &kp DOT              &kp RIGHT_SHIFT
+                                                      &lt LEF TAB  &kp SPACE    &kp ENTER  &lt RIG BACKSPACE
             >;
         };
 
@@ -148,9 +158,9 @@
 
         tri_layer {
             bindings = <
-&kp F1  &kp F2   &kp F3   &kp F4   &bt BT_SEL 0    &bt BT_SEL 2  &out OUT_TOG   &tog WIN  &kp C_MUTE    &kp C_PREV
-&kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 1    &bt BT_SEL 3  &kp C_BRI_UP   &trans    &kp C_VOL_UP  &kp C_PP
-&kp F9  &kp F10  &kp F11  &kp F12  &bt BT_CLR      &bt BT_SEL 4  &kp C_BRI_DEC  &trans    &kp C_VOL_DN  &kp C_NEXT
+&kp F1  &kp F2   &kp F3   &kp F4   &bt BT_SEL 0    &bt BT_SEL 2  &out OUT_TOG   &tog WIN  &kp C_VOLUME_UP  &kp C_PREV
+&kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 1    &bt BT_SEL 3  &kp C_BRI_UP   &trans    &kp C_MUTE       &kp C_PP
+&kp F9  &kp F10  &kp F11  &kp F12  &bt BT_CLR      &bt BT_SEL 4  &kp C_BRI_DEC  &trans    &kp C_VOL_DN     &kp C_NEXT
                           &trans   &trans          &trans        &trans
             >;
         };
