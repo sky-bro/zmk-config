@@ -104,6 +104,16 @@
             bindings = <&kp LC(TAB)>;
             key-positions = <3 2>;
         };
+
+        fc2Copy {
+            bindings = <&kp LG(C)>;
+            key-positions = <13 22>;
+        };
+
+        cx2Paste {
+            bindings = <&kp LG(V)>;
+            key-positions = <21 22>;
+        };
     };
 
     macros {
