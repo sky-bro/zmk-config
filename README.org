@@ -1,0 +1,80 @@
+#+Title: k4i's split kbd
+
+[[./README-zh_CN.org][中文]] | English
+
+* Quick Start
+
+** flash new firmware
+
+1. [[https://github.com/sky-bro/zmk-config/fork][fork]] this repo
+2. (optional) update keymap and config file
+3. wait github action to build the firmware, then you download and decompress the zip file
+4. connect left or right half of keyboard you want to flash to your computer with use cable
+5. connect keyboard to a device with either usb or bluetooth.
+6. left or right half enter bootloader with =&bootloader= key
+7. copy firmware to your half of keyboard (updating keymap and changing keyboard name do not have to flash the right half)
+
+** My Keymap
+
+#+begin_quote
+screenshots taken from [[https://nickcoutsos.github.io/keymap-editor/][keymap editor]]
+#+end_quote
+
+*** Characters
+
+- The default layer and windows layer is where you would type characters.
+- they both have modifier keys =CTRL=, =OPTION (ALT)=, =COMMAND (WINDOWS)= sharing same position with character keys on your ring finger, middle finger and pointing finger on both hands. Hold the key to trigger the modifier, or tap the key to type in character.
+
+#+caption: default layer
+[[file:images/default-layer.png]]
+
+#+caption: windows layer
+[[file:images/windows-layer.png]]
+
+*** Numbers and Navigation
+
+- Hold the right tab to enter right layer, then you can type in numbers or do some navigation.
+- Release your right tab to return to default or windows layer.
+- Special keys:
+  - =&bootloader= :: make right part of the split keyboard enter bootloader, then you can copy in your new firmware.
+
+#+caption: right layer
+[[file:images/right-layer.png]]
+
+*** Punctuations
+
+- Hold the left tab to enter left layer, then you can type in punctuations.
+- Release your left tab to return to default or windows layer.
+- Special keys:
+  - =&default_report= :: type out battery information
+  - =&bootloader= :: make left part of the split keyboard enter bootloader, then you can copy in your new firmware.
+  - =5= :: switch to mouse layer
+
+#+caption: left layer
+[[file:images/left-layer.png]]
+
+*** Functions
+
+- Hold both the left and right tab to enter tri layer, then you can type function keys.
+  - =BT_SEL_#= :: select position of bluetooth device you are connecting or want to connect with.
+  - =BT_CLR= :: clear the connection on selected position, then you can reconnect to this position with your device.
+  - =OUT_TOG= :: toggle between usb and bluetooth connection, so you can connect up to 6 devices (5 with bluetooth, and 1 with usb)
+  - =&tog 1= :: toggle windows layer, so you can switch between default and windows layer.
+- Release your tab keys to return to default or windows layer.
+
+#+caption: tri layer
+[[file:images/tri-layer.png]]
+
+*** Mouse
+
+- hold left tab (to enter left layer), and press space key to enter mouse layer
+- press =p= or =q= to quit mouse layer
+- =MB4= is for going backward and =MB5= is for going forward
+
+#+caption: mouse layer
+[[file:images/mouse-layer.png]]
+
+* References
+
+- [[https://github.com/davidphilipbarr/Sweep][Sweep Repo]]
+- [[https://www.youtube.com/watch?v=VShLPvF693k][keymap I initially copied]]
