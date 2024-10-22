@@ -109,14 +109,5 @@
                           &trans   &trans          &trans        &trans
             >;
         };
-
-        mouse {
-            bindings = <
-&tog MOUSE  &mkp MB4  &mkp MCLK  &mkp MB5   &trans      &msc SCRL_LEFT     &msc SCRL_DOWN    &msc SCRL_UP     &msc SCRL_RIGHT    &tog MOUSE
-&trans      &trans    &trans     &trans     &trans      &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_UP     &mmv MOVE_RIGHT    &trans
-&trans      &trans    &trans     &trans     &trans      &trans     &mkp MB4  &mkp MCLK  &mkp MB5  &trans
-                                 &kp SPACE  &kp LSHIFT  &mkp LCLK  &mkp RCLK
-            >;
-        };
     };
 };
