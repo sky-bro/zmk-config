@@ -5,13 +5,13 @@ manifest:
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
+     - name: zmk
+       remote: zmkfirmware
+       revision: main
+       import: app/west.yml
     # - name: zmk
-    #   remote: zmkfirmware
-    #   revision: main
-    #   import: app/west.yml
-    - name: zmk
-      url: https://github.com/sky-bro/zmk
-      revision: k4i-sweep-kbd
-      import: app/west.yml
+    #  url: https://github.com/sky-bro/zmk
+    #  revision: k4i-sweep-kbd
+    #  import: app/west.yml
   self:
     path: config
