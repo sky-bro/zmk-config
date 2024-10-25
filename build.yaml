@@ -20,9 +20,7 @@
 include:
   - board: nice_nano_v2
     shield: cradio_left
-    snippet: zmk-usb-logging
   - board: nice_nano_v2
     shield: cradio_right
-    snippet: zmk-usb-logging
   - board: nice_nano_v2
     shield: settings_reset
