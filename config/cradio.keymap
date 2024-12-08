@@ -17,15 +17,6 @@
 #define TRI 4
 #define MOUSE 5
 
-#define U_MS_U &mmv MOVE_UP
-#define U_MS_D &mmv MOVE_DOWN
-#define U_MS_L &mmv MOVE_LEFT
-#define U_MS_R &mmv MOVE_RIGHT
-#define U_WH_U &msc SCRL_UP
-#define U_WH_D &msc SCRL_DOWN
-#define U_WH_L &msc SCRL_LEFT
-#define U_WH_R &msc SCRL_RIGHT
-
 / {
     chosen {
         zmk,charmap = &charmap_us;
@@ -104,12 +95,11 @@
         tri_layer {
             bindings = <
 &kp F1  &kp F2   &kp F3   &kp F4   &bt BT_SEL 0    &bt BT_SEL 2  &out OUT_TOG   &tog WIN  &kp C_MUTE    &kp C_PREV
-&kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 1    &bt BT_SEL 3  &kp C_BRI_UP   &trans    &kp C_VOL_UP  &kp C_PP
+&kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 1    &bt BT_SEL 3  &kp C_BRI_UP   &studio_unlock    &kp C_VOL_UP  &kp C_PP
 &kp F9  &kp F10  &kp F11  &kp F12  &bt BT_CLR      &bt BT_SEL 4  &kp C_BRI_DEC  &trans    &kp C_VOL_DN  &kp C_NEXT
                           &trans   &trans          &trans        &trans
             >;
         };
-
         mouse {
             bindings = <
 &tog MOUSE  &mkp MB4  &mkp MCLK  &mkp MB5   &trans      &msc SCRL_LEFT     &msc SCRL_DOWN    &msc SCRL_UP     &msc SCRL_RIGHT    &tog MOUSE
