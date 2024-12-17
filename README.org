@@ -9,10 +9,16 @@
 1. [[https://github.com/sky-bro/zmk-config/fork][fork]] this repo
 2. (optional) update keymap and config file
 3. wait github action to build the firmware, then you download and decompress the zip file
-4. connect left or right half of keyboard you want to flash to your computer with use cable
-5. connect keyboard to a device with either usb or bluetooth.
-6. left or right half enter bootloader with =&bootloader= key
-7. copy firmware to your half of keyboard (updating keymap and changing keyboard name do not have to flash the right half)
+4. connect left or right half to your computer with use cable
+5. left or right half enter bootloader, you can enter bootloader by
+   1) pressing the =&bootloader= key (requires that keyboard is connected to a device for typing)
+   2) double-clicking the reset button
+   3) quickly short-circuiting the reset button twice (if the button is not working)
+   4) quickly short-circuiting the gnd & rst pins of the controller twice (top left corner, the second & thrid pins)
+6. copy firmware to your half of keyboard (updating keymap and changing keyboard name do not have to flash the right half)
+   1) filename with 'left' is for the left half of keyboard
+   2) filename with 'right' is for the right half of keyboard
+   3) filename with 'reset' is for the left/right half to forget its bluetooth connection info (when left & right half is not able to connect, to forget paired devices)
 
 ** My Keymap
 
