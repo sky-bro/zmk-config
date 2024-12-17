@@ -111,6 +111,7 @@
             bindings = <&kp LG(LS(A))>;
             key-positions = <10 11>;
         };
+    };
 
     macros {
         unlock: unlock {
