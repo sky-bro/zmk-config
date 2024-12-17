@@ -97,9 +97,9 @@
             key-positions = <3 2>;
         };
 
-        fc2Copy {
+        we2Copy {
             bindings = <&kp LG(C)>;
-            key-positions = <13 22>;
+            key-positions = <1 2>;
         };
 
         cx2Paste {
@@ -111,7 +111,6 @@
             bindings = <&kp LG(LS(A))>;
             key-positions = <10 11>;
         };
-    };
 
     macros {
         unlock: unlock {
