@@ -108,9 +108,9 @@
             key-positions = <3 2>;
         };
 
-        we2Copy {
+        fc2Copy {
             bindings = <&kp LG(C)>;
-            key-positions = <1 2>;
+            key-positions = <13 22>;
         };
 
         cx2Paste {
@@ -160,7 +160,7 @@
             bindings = <
 &kp N1         &kp N2    &kp N3     &kp N4   &kp N5     &kp N6    &kp N7     &kp N8     &kp N9     &kp N0
 &kp LG(LS(A))  &kp CAPS  &kp PSCRN  &kp INS  &trans     &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans
-&trans         &trans    &trans     &trans   &trans     &kp HOME  &kp PG_DN  &kp PG_UP  &trans     &bootloader
+&trans         &trans    &trans     &trans   &trans     &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &bootloader
                                     &trans   &kp ESC    &trans    &trans
             >;
         };
