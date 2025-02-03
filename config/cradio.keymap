@@ -101,6 +101,7 @@
                           &trans   &trans          &trans        &trans
             >;
         };
+
         mouse {
             bindings = <
 &tog MOUSE  &mkp MB4  &mkp MCLK  &mkp MB5   &trans      &msc SCRL_LEFT     &msc SCRL_DOWN    &msc SCRL_UP     &msc SCRL_RIGHT    &tog MOUSE
@@ -109,6 +110,7 @@
                                  &kp SPACE  &kp LSHIFT  &mkp LCLK  &mkp RCLK
             >;
         };
+
         game {
             bindings = <
 &tog GAME   &kp Q   &kp W   &kp E       &kp R       &kp N1  &kp N2  &kp N3  &kp N4  &kp N5
