@@ -114,8 +114,8 @@
         game {
             bindings = <
 &tog GAME   &kp Q   &kp W   &kp E       &kp R       &kp N1  &kp N2  &kp N3  &kp N4  &kp N5
-&kp LSHIFT  &kp A   &kp S   &kp D       &kp F       &trans  &trans  &trans  &trans  &trans
-&kp LCTRL   &kp Z   &kp X   &kp B       &kp ESC     &trans  &trans  &trans  &trans  &trans
+&kp LSHIFT  &kp A   &kp S   &kp D       &kp F       &kp G   &trans  &trans  &trans  &kp GRAVE
+&kp LCTRL   &kp Z   &kp X   &kp B       &kp ESC     &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
                             &kp LALT    &kp SPACE   &trans  &trans
             >;
         };
