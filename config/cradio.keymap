@@ -17,6 +17,31 @@
 #define TRI 4
 #define MOUSE 5
 
+// https://zmk.dev/docs/development/hardware-integration/soft-off-setup?advanced-methods=wakeup&kscan-type=dkscan
+/ {
+    keys {
+        compatible = "gpio-keys";
+        soft_off_gpio_key: soft_off_gpio_key {
+            gpios = <&gpio1 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        };
+    };
+    wakeup_scan: wakeup_scan {
+        compatible = "zmk,kscan-gpio-direct";
+        input-keys = <&soft_off_gpio_key>;
+        wakeup-source;
+    };
+    side_band_behavior_triggers: side_band_behavior_triggers {
+        compatible = "zmk,kscan-sideband-behaviors";
+        kscan = <&wakeup_scan>;
+        auto-enable;
+        wakeup-source;
+    };
+    soft_off_wakers {
+        compatible = "zmk,soft-off-wakeup-sources";
+        wakeup-sources = <&wakeup_scan>;
+    };
+};
+
 / {
     chosen {
         zmk,charmap = &charmap_us;
@@ -101,7 +126,7 @@
             bindings = <
 &kp F1  &kp F2   &kp F3   &kp F4   &bt BT_SEL 0    &bt BT_SEL 2  &out OUT_TOG   &tog WIN  &kp C_MUTE    &kp C_PREV
 &kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 1    &bt BT_SEL 3  &kp C_BRI_UP   &studio_unlock    &kp C_VOL_UP  &kp C_PP
-&kp F9  &kp F10  &kp F11  &kp F12  &bt BT_CLR      &bt BT_SEL 4  &kp C_BRI_DEC  &trans    &kp C_VOL_DN  &kp C_NEXT
+&kp F9  &kp F10  &kp F11  &kp F12  &bt BT_CLR      &bt BT_SEL 4  &kp C_BRI_DEC  &soft_off    &kp C_VOL_DN  &kp C_NEXT
                           &trans   &trans          &trans        &trans
             >;
         };

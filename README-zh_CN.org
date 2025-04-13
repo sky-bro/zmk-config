@@ -1,4 +1,4 @@
-#+Title: k4i's split kbd
++Title: k4i's split kbd
 
 中文 | [[./README.org][English]]
 
@@ -66,6 +66,8 @@
   - =BT_CLR= :: 清空选择的位置的蓝牙设备, 以便用此位置连接新的蓝牙设备
   - =OUT_TOG= :: usb和蓝牙设备间切换, 所以一共可以连接6个设备 (5个蓝牙设备, 一个usb设备)
   - =&tog 1= :: 开启/关闭windows层, 用来在默认层和windows层间切换
+  - =&studio_unlock= :: 解锁键盘, 这样就可以用[[https://zmk.dev/docs/features/studio#keymap-changes][zmk studio]]来修改键位
+  - =&soft_off= :: 键盘进入soft off模式, 和深度睡眠模式类似, 默认配置的1小时没有操作进入深度睡眠, 但soft off模式只能通过专门的唤醒键来唤醒 (默认设置为左手拇指键: =shift=)
 - 松开tab键回到默认层或windows层
 
 #+caption: tri layer
