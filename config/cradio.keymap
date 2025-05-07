@@ -16,6 +16,7 @@
 #define LEF 3
 #define TRI 4
 #define MOUSE 5
+#define TEST 6
 
 // https: //zmk.dev/docs/development/hardware-integration/soft-off-setup?advanced-methods=wakeup&kscan-type=dkscan
 / {
@@ -139,4 +140,15 @@
             &kp SPACE  &kp LSHIFT  &mkp LCLK  &mkp RCLK
             >;
         };
+
+        test {
+            display-name = "test";
+            bindings = <
+            &kp F1  &kp F2   &kp F3   &kp F4   &bt BT_SEL 0    &bt BT_SEL 2  &out OUT_TOG   &tog WIN  &kp C_MUTE    &kp C_PREV
+            &kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 1    &bt BT_SEL 3  &kp C_BRI_UP   &studio_unlock    &kp C_VOL_UP  &kp C_PP
+            &kp F9  &kp F10  &kp F11  &kp F12  &bt BT_CLR      &bt BT_SEL 4  &kp C_BRI_DEC  &soft_off    &kp C_VOL_DN  &kp C_NEXT
+            &trans   &trans          &trans        &trans
+            >;
+        };
     };
+};
