@@ -225,7 +225,7 @@
 &kp LBKT         &kp RBKT   &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp CARET    &kp PLUS   &kp N1  &kp N2  &kp N3  &kp MINUS
 &kp STAR         &kp SLASH  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PIPE     &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp UNDERSCORE
 &kp EXCLAMATION  &kp TILDE  &kp HASH              &sk PERCENT            &kp AT       &kp AMPS   &kp N7  &kp N8  &kp N9  &kp DOLLAR
-                                                  &trans                 &trans       &kp N0     &tog 5
+                                                  &trans                 &trans       &kp N0     &trans
             >;
         };
 
