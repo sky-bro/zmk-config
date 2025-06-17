@@ -232,9 +232,9 @@
         symbols_extra_layer {
             display-name = "SYMBOLS_EXTRA";
             bindings = <
-&str_field  &str_dbl_slash  &str_dbl_colon  &str_min_eq   &str_strict_diff    &str_strict_eq  &str_less_eq   &str_greater_eq    &str_arrow      &kp SINGLE_QUOTE
-&str_and    &str_or         &str_opt        &str_plus_eq  &str_diff           &str_eq         &kp LESS_THAN  &kp GREATER_THAN   &str_fat_arrow  &kp SEMI
-&trans      &trans          &trans          &trans        &trans              &kp COLON       &kp QUESTION   &kp DOUBLE_QUOTES  &kp GRAVE       &kp SLASH
+&str_field  &str_dbl_slash  &str_dbl_colon  &str_min_eq   &str_strict_diff    &str_strict_eq  &str_less_eq   &str_greater_eq    &str_arrow  &str_fat_arrow
+&str_and    &str_or         &str_opt        &str_plus_eq  &str_diff           &str_eq         &kp LESS_THAN  &kp GREATER_THAN   &kp SEMI    &kp SINGLE_QUOTE
+&trans      &trans          &trans          &trans        &trans              &kp COLON       &kp QUESTION   &kp DOUBLE_QUOTES  &kp GRAVE   &kp SLASH
                                             &trans        &kp ESC             &trans          &trans
             >;
         };
