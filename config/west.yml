@@ -15,7 +15,7 @@ manifest:
       remote: gpeye
       revision: main
     - name: zmk
-      remote: zmkfirmware
+      remote: zmk
       revision: main
       import: app/west.yml
     - name: prospector-zmk-module
