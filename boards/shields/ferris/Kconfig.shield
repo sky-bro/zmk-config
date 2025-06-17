@@ -1,0 +1,11 @@
+# Copyright (c) 2020 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+#
+config SHIELD_FERRIS_CENTRAL
+    def_bool $(shields_list_contains,ferris_central)
+
+config SHIELD_FERRIS_LEFT
+    def_bool $(shields_list_contains,ferris_left)
+
+config SHIELD_FERRIS_RIGHT
+    def_bool $(shields_list_contains,ferris_right)

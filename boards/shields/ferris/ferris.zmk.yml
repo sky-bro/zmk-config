@@ -1,0 +1,14 @@
+file_format: "1"
+id: ferris
+name: Ferris
+type: shield
+url: https://github.com/luckasRanarison/ferris.zmk
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - studio
+siblings:
+  - ferris_central
+  - ferris_left
+  - ferris_right

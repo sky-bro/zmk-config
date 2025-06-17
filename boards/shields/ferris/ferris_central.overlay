@@ -1,0 +1,59 @@
+/*
+*
+* Copyright (c) 2021 Darryl deHaan
+* SPDX-License-Identifier: MIT
+*
+*/
+
+#include "ferris.dtsi"
+
+/{
+    chosen {
+        zmk,kscan = &mock_kscan;
+        zephyr,display = &oled;
+    };
+    mock_kscan: kscan_1 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+};
+
+&pinctrl {
+    i2c0_default: i2c0_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
+                <NRF_PSEL(TWIM_SCL, 0, 20)>;
+        };
+    };
+
+    i2c0_sleep: i2c0_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0,17)>,
+                <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            low-power-enable;
+        };
+    };	
+}; 
+
+&i2c0 {
+	status = "okay";
+	compatible = "nordic,nrf-twi";
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-1 = <&i2c0_sleep>;
+	oled: sh1106@3c {
+        compatible = "sinowealth,sh1106";
+        reg = <0x3c>;
+        width = <129>;
+        height = <64>;
+        segment-offset = <1>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <63>;
+        segment-remap;
+        com-invdir;
+        inversion-on;
+        prechargep = <0x22>;
+	};
+};
