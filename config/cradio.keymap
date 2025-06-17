@@ -59,6 +59,17 @@
             bindings = <&kp>, <&kp>;
         };
 
+        tm: tm {
+            compatible = "zmk,behavior-hold-tap";
+            label = "momentary_toggle";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            global-quick-tap;
+            bindings = <&mo>, <&tog>;
+        };
+
         mmv {
             acceleration-exponent = <1>;      // 1
             time-to-max-speed-ms = <300>;    // 40
@@ -201,10 +212,10 @@
         default_layer {
             display-name = "DEFAULT";
             bindings = <
-&kp Q  &kp W       &kp E       &kp R        &kp T          &kp Y                  &kp U            &kp I       &kp O       &kp P
-&kp A  &ht LGUI S  &ht LALT D  &ht LCTRL F  &kp G          &kp H                  &ht RCTRL J      &ht RALT K  &ht RGUI L  &kp SEMICOLON
-&kp Z  &kp X       &kp C       &kp V        &kp B          &kp N                  &kp M            &kp COMMA   &kp DOT     &kp ENTER
-                               &lt 1 TAB    &lt 2 SPACE    &ht LEFT_SHIFT RETURN  &lt 3 BACKSPACE
+&kp Q  &kp W       &kp E       &kp R        &kp T          &kp Y                  &kp U        &kp I       &kp O       &kp P
+&kp A  &ht LGUI S  &ht LALT D  &ht LCTRL F  &kp G          &kp H                  &ht RCTRL J  &ht RALT K  &ht RGUI L  &kp SEMICOLON
+&kp Z  &kp X       &kp C       &kp V        &kp B          &kp N                  &kp M        &kp COMMA   &kp DOT     &kp SLASH
+                               &lt 1 TAB    &lt 2 SPACE    &ht LEFT_SHIFT RETURN  &tm 3 5
             >;
         };
 
@@ -231,8 +242,8 @@
         edit_layer {
             display-name = "EDIT";
             bindings = <
-&trans  &trans  &trans  &trans  &trans     &trans    &trans     &trans     &trans     &trans
-&trans  &trans  &trans  &trans  &trans     &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &kp DELETE
+&trans  &trans  &trans  &trans  &trans     &trans    &trans     &trans     &trans     &kp DEL
+&trans  &trans  &trans  &trans  &trans     &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &kp BACKSPACE
 &trans  &trans  &trans  &trans  &trans     &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &kp INS
                         &trans  &kp ESC    &trans    &trans
             >;
