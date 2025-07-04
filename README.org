@@ -66,6 +66,8 @@ screenshots taken from [[https://nickcoutsos.github.io/keymap-editor/][keymap ed
   - =BT_CLR= :: clear the connection on selected position, then you can reconnect to this position with your device.
   - =OUT_TOG= :: toggle between usb and bluetooth connection, so you can connect up to 6 devices (5 with bluetooth, and 1 with usb)
   - =&tog 1= :: toggle windows layer, so you can switch between default and windows layer.
+  - =&studio_unlock= :: unlock keyboard so that you can use [[https://zmk.dev/docs/features/studio#keymap-changes][zmk studio]] to setup keys
+  - =&soft_off= :: enter soft off, like deep sleep which enters after an hour of inactivity, but soft off can only be woke up with wake up keys (set to left thumb key: =shift=)
 - Release your tab keys to return to default or windows layer.
 
 #+caption: tri layer
