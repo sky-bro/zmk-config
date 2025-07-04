@@ -1,14 +1,14 @@
 // Copyright (c) 2022 The ZMK Contributors
 // SPDX-License-Identifier: MIT
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 2500  // 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // 10
+#define ZMK_MOUSE_DEFAULT_MOVE_VAL 2500  // 600
+#define ZMK_MOUSE_DEFAULT_SCRL_VAL 20    // 10
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/mouse.h>
 
 #define MAC 0
 #define WIN 1
@@ -16,7 +16,6 @@
 #define LEF 3
 #define TRI 4
 #define MOUSE 5
-
 
 // https: //zmk.dev/docs/development/hardware-integration/soft-off-setup?advanced-methods=wakeup&kscan-type=dkscan
 / {
@@ -44,9 +43,8 @@
 };
 
 / {
-    chosen {
-        zmk,charmap = &charmap_us;
-    };
+    chosen { zmk,charmap = &charmap_us; };
+
     behaviors {
         ht: hold_tap {
             label = "hold_tap";
@@ -58,11 +56,13 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         };
+
         mmv {
             acceleration-exponent = <1>;      // 1
             time-to-max-speed-ms = <300>;    // 40
             delay-ms = <0>;                   // 0
         };
+
         msc {
             acceleration-exponent = <0>;      // 0
             time-to-max-speed-ms = <40>;      // 500
@@ -79,65 +79,129 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        jk2esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <16 17>;
+        };
+
+        kl2selectall {
+            bindings = <&kp LG(A)>;
+            key-positions = <17 18>;
+        };
+
+        fd2cmd+space {
+            bindings = <&kp LG(SPACE)>;
+            key-positions = <12 13>;
+        };
+
+        ds2changeInput {
+            bindings = <&kp LC(SPACE)>;
+            key-positions = <12 11>;
+        };
+
+        qaz2LockScreen {
+            bindings = <&kp LG(LC(Q))>;
+            key-positions = <0 10 20>;
+        };
+
+        unlock {
+            bindings = <&unlock>;
+            key-positions = <9 19 29>;
+        };
+
+        xc2lastApp {
+            bindings = <&kp LG(TAB)>;
+            key-positions = <22 23>;
+        };
+
+        er2lastPage {
+            bindings = <&kp LC(TAB)>;
+            key-positions = <3 2>;
+        };
+
+        we2Copy {
+            bindings = <&kp LG(C)>;
+            key-positions = <1 2>;
+        };
+
+        cx2Paste {
+            bindings = <&kp LG(V)>;
+            key-positions = <21 22>;
+        };
+
+        as2screenshot {
+            bindings = <&kp LG(LS(A))>;
+            key-positions = <10 11>;
+        };
+    };
+
+    macros {
+        unlock: unlock {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N1 &kp N1 &kp N2 &kp N1 &kp ENTER>;
+            label = "UNLOCK";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "DEFAULT";
             bindings = <
-            &kp Q  &kp W       &kp E        &kp R        &kp T         &kp Y      &kp U        &kp I        &kp O       &kp P
-            &kp A  &ht LALT S  &ht LCTRL D  &ht LGUI F   &kp G         &kp H      &ht RGUI J   &ht RCTRL K  &ht RALT L  &kp BSPC
-            &kp Z  &kp X       &kp C        &kp V        &kp B         &kp N      &kp M        &kp COMMA    &kp DOT     &kp ENTER
-            &lt LEF TAB  &kp LSHIFT     &kp SPACE &lt RIG TAB
+&kp Q             &kp W               &kp E           &kp R        &kp T                 &kp Y                &kp U              &kp I            &kp O                &kp P
+&lt 5 A           &ht LEFT_CONTROL S  &ht LEFT_ALT D  &ht LGUI F   &kp G                 &kp H                &ht RGUI J         &ht RIGHT_ALT K  &ht RIGHT_CONTROL L  &kp BSPC
+&ht LEFT_SHIFT Z  &kp X               &kp C           &kp V        &kp B                 &kp N                &kp M              &kp COMMA        &kp DOT              &kp RIGHT_SHIFT
+                                                      &lt LEF TAB  &ht LEFT_GUI SPACE    &ht RIGHT_GUI ENTER  &lt RIG BACKSPACE
             >;
         };
 
         windows_layer {
-            display-name = "WIN";
             bindings = <
-            &kp Q  &kp W       &kp E       &kp R        &kp T         &kp Y      &kp U        &kp I       &kp O       &kp P
-            &kp A  &ht LALT S  &ht LGUI D  &ht LCTRL F  &kp G         &kp H      &ht RCTRL J  &ht RGUI K  &ht RALT L  &kp BSPC
-            &kp Z  &kp X       &kp C       &kp V        &kp B         &kp N      &kp M        &kp COMMA   &kp DOT     &kp ENTER
-            &lt LEF TAB  &kp LSHIFT     &kp SPACE &lt RIG TAB
+&kp Q  &kp W       &kp E       &kp R        &kp T         &kp Y      &kp U              &kp I       &kp O       &kp P
+&kp A  &ht LALT S  &ht LGUI D  &ht LCTRL F  &kp G         &kp H      &ht RCTRL J        &ht RGUI K  &ht RALT L  &kp BSPC
+&kp Z  &kp X       &kp C       &kp V        &kp B         &kp N      &kp M              &kp COMMA   &kp DOT     &kp ENTER
+                               &lt LEF TAB  &kp LSHIFT    &kp SPACE  &lt RIG BACKSPACE
             >;
         };
 
         right_layer {
-            display-name = "NUM & NAVIGATION";
             bindings = <
-            &kp N1   &kp N2    &kp N3     &kp N4   &kp N5     &kp N6  &kp N7    &kp N8     &kp N9     &kp N0
-            &kp DEL  &kp CAPS  &kp PSCRN  &kp INS  &trans     &kp LEFT  &kp DOWN   &kp UP  &kp RIGHT &trans
-            &trans   &trans    &trans     &trans   &trans     &kp HOME  &kp PG_DN  &kp PG_UP  &kp END &bootloader
-            &trans   &kp ESC    &trans  &trans
+&kp N1         &kp N2    &kp N3     &kp N4   &kp N5     &kp N6    &kp N7     &kp N8     &kp N9     &kp N0
+&kp LG(LS(A))  &kp CAPS  &kp PSCRN  &kp INS  &trans     &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans
+&trans         &trans    &trans     &trans   &trans     &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &bootloader
+                                    &trans   &kp ESC    &trans    &trans
             >;
         };
 
         left_layer {
-            display-name = "SYMBOL";
             bindings = <
-            &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp GRAVE  &kp TILDE
-            &kp DQT   &kp LBKT  &kp LBRC  &kp LPAR  &default_report       &kp FSLH   &kp MINUS  &kp EQUAL  &kp COLON  &kp SEMI
-            &kp SQT   &kp RBKT  &kp RBRC  &kp RPAR  &bootloader       &kp BSLH   &kp UNDER  &kp PLUS   &kp PIPE   &kp QMARK
-            &trans    &trans       &tog MOUSE     &trans
+&kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT          &kp CARET   &kp AMPS   &kp ASTRK  &kp GRAVE  &kp TILDE
+&kp DQT   &kp LBKT  &kp LBRC  &kp LPAR  &default_report    &kp FSLH    &kp MINUS  &kp EQUAL  &kp COLON  &kp SEMI
+&kp SQT   &kp RBKT  &kp RBRC  &kp RPAR  &bootloader        &kp BSLH    &kp UNDER  &kp PLUS   &kp PIPE   &kp QMARK
+                              &trans    &trans             &tog MOUSE  &trans
             >;
         };
 
         tri_layer {
-            display-name = "FUNC";
             bindings = <
-            &kp F1  &kp F2   &kp F3   &kp F4   &bt BT_SEL 0    &bt BT_SEL 2  &out OUT_TOG   &tog WIN  &kp C_MUTE    &kp C_PREV
-            &kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 1    &bt BT_SEL 3  &kp C_BRI_UP   &studio_unlock    &kp C_VOL_UP  &kp C_PP
-            &kp F9  &kp F10  &kp F11  &kp F12  &bt BT_CLR      &bt BT_SEL 4  &kp C_BRI_DEC  &soft_off    &kp C_VOL_DN  &kp C_NEXT
-            &trans   &trans          &trans        &trans
+&kp F1  &kp F2   &kp F3   &kp F4   &bt BT_SEL 0    &bt BT_SEL 2  &out OUT_TOG   &tog WIN  &kp C_MUTE    &kp C_PREV
+&kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 1    &bt BT_SEL 3  &kp C_BRI_UP   &studio_unlock    &kp C_VOL_UP  &kp C_PP
+&kp F9  &kp F10  &kp F11  &kp F12  &bt BT_CLR      &bt BT_SEL 4  &kp C_BRI_DEC  &soft_off    &kp C_VOL_DN  &kp C_NEXT
+                          &trans   &trans          &trans        &trans
             >;
         };
         mouse {
-            display-name = "MOUSE";
             bindings = <
-            &tog MOUSE  &mkp MB4  &mkp MCLK  &mkp MB5   &trans      &msc SCRL_LEFT     &msc SCRL_DOWN    &msc SCRL_UP     &msc SCRL_RIGHT    &tog MOUSE
-            &trans      &trans    &trans     &trans     &trans      &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_UP     &mmv MOVE_RIGHT    &trans
-            &trans      &trans    &trans     &trans     &trans      &trans     &mkp MB4  &mkp MCLK  &mkp MB5  &trans
-            &kp SPACE  &kp LSHIFT  &mkp LCLK  &mkp RCLK
+&tog MOUSE  &mkp MB4  &mkp MCLK  &mkp MB5   &trans        &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &tog MOUSE
+&trans      &trans    &trans     &trans     &trans        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
+&trans      &trans    &trans     &trans     &trans        &trans          &mkp MB4        &mkp MCLK     &mkp MB5         &trans
+                                 &kp SPACE  &kp LSHIFT    &mkp LCLK       &mkp RCLK
             >;
         };
     };
