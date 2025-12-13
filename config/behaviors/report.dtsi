@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <dt-bindings/zmk/behaviors.h>
+
+/ {
+    behaviors {
+        // Behavior can be invoked on peripherals, so name must be <= 8 characters.
+#if ZMK_BEHAVIOR_OMIT(default_report)
+    /omit-if-no-ref/
+#endif
+        default_report: default_report {
+            compatible = "zmk,behavior-report";
+            #binding-cells = <0>;
+        };
+    };
+};

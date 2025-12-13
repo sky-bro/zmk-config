@@ -1,3 +1,5 @@
 build:
   settings:
     board_root: .
+  depends:
+  - zmk-behavior-report

@@ -5,6 +5,9 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // 10
 
 #include <behaviors.dtsi>
+#include "behaviors/character_map.dtsi"
+#include "behaviors/send_string.dtsi"
+#include "behaviors/report.dtsi"
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
@@ -49,13 +52,12 @@
     };
     behaviors {
         ht: hold_tap {
-            label = "hold_tap";
+            display-name = "hold_tap";
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            global-quick-tap;
             bindings = <&kp>, <&kp>;
         };
         mmv {
