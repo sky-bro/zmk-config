@@ -15,11 +15,10 @@
 
 #define MAC 0
 #define WIN 1
-#define RIG 2
-#define LEF 3
+#define LEF 2
+#define RIG 3
 #define TRI 4
 #define MOUSE 5
-
 
 // https://zmk.dev/docs/development/hardware-integration/soft-off-setup?advanced-methods=wakeup&kscan-type=dkscan
 / {
@@ -54,6 +53,42 @@
         zmk,charmap = &charmap_us;
         zmk,battery = &vbatt;
     };
+
+    macros {
+        alt_d_macro: alt_d_macro {
+            compatible = "zmk,behavior-macro";
+            label = "ALT_D_MACRO";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press   &kp LALT>,
+                <&macro_tap     &kp D>,
+                <&macro_release &kp LALT>;
+        };
+
+        switch_lang_windows_caps: switch_lang_windows_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <
+                &macro_press   &kp LALT
+                &macro_press   &kp LSHIFT
+                &macro_release &kp LSHIFT
+                &macro_release &kp LALT
+            >;
+        };
+
+        close_tab: close_tab {
+            label = "CLOSE_TAB";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp W>
+                , <&macro_release &kp LCTRL>;
+        };
+    };
+
     behaviors {
         ht: hold_tap {
             display-name = "hold_tap";
@@ -63,6 +98,13 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
             bindings = <&kp>, <&kp>;
+        };
+        d_ctrl_morph: d_ctrl_morph {
+            compatible = "zmk,behavior-mod-morph";
+            label = "D_CTRL_MORPH";
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL | MOD_RCTL)>;
+            bindings = <&kp D>, <&alt_d_macro>;
         };
         mmv {
             acceleration-exponent = <1>;      // 1
@@ -76,11 +118,57 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <0 1>;
+            bindings = <&kp ESC>;
+        };
+
+        combo_tab {
+            timeout-ms = <50>;
+            key-positions = <10 11>;
+            bindings = <&kp TAB>;
+        };
+
+        combo_bspc {
+            timeout-ms = <50>;
+            key-positions = <8 9>;
+            bindings = <&kp BSPC>;
+        };
+
+        combo_del {
+            timeout-ms = <50>;
+            key-positions = <7 8>;
+            bindings = <&kp DEL>;
+        };
+
+        combo_sqt {
+            timeout-ms = <50>;
+            key-positions = <18 19>;
+            bindings = <&kp SQT>;
+        };
+
+        combo_lang {
+            timeout-ms = <50>;
+            key-positions = <20 21>;
+            bindings = <&switch_lang_windows_caps>;
+        };
+
+        combo_close_tab {
+            timeout-ms = <50>;
+            key-positions = <21 22>;
+            bindings = <&close_tab>;
+        };
+    };
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
         tri_layer {
-            if-layers = <RIG LEF>;
+            if-layers = <LEF RIG>;
             then-layer = <TRI>;
         };
     };
@@ -88,62 +176,63 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
-            display-name = "DEFAULT";
+        mac_layer {
+            display-name = "Mac";
             bindings = <
             &kp Q  &kp W       &kp E        &kp R        &kp T         &kp Y      &kp U        &kp I        &kp O       &kp P
-            &kp A  &ht LALT S  &ht LCTRL D  &ht LGUI F   &kp G         &kp H      &ht RGUI J   &ht RCTRL K  &ht RALT L  &kp BSPC
-            &kp Z  &kp X       &kp C        &kp V        &kp B         &kp N      &kp M        &kp COMMA    &kp DOT     &kp ENTER
-            &lt LEF TAB  &kp LSHIFT     &kp SPACE &lt RIG TAB
+            &kp A  &ht LALT S  &ht LCTRL D  &ht LGUI F   &kp G         &kp H      &ht RGUI J   &ht RCTRL K  &ht RALT L  &kp SEMI
+            &kp Z  &kp X       &kp C        &kp V        &kp B         &kp N      &kp M        &kp COMMA    &kp DOT     &kp FSLH
+                               &kp LSHIFT   &lt LEF SPACE              &lt RIG RET &kp BSPC
             >;
         };
 
         windows_layer {
-            display-name = "WIN";
+            display-name = "Windows";
             bindings = <
-            &kp Q  &kp W       &kp E       &kp R        &kp T         &kp Y      &kp U        &kp I       &kp O       &kp P
-            &kp A  &ht LALT S  &ht LGUI D  &ht LCTRL F  &kp G         &kp H      &ht RCTRL J  &ht RGUI K  &ht RALT L  &kp BSPC
-            &kp Z  &kp X       &kp C       &kp V        &kp B         &kp N      &kp M        &kp COMMA   &kp DOT     &kp ENTER
-            &lt LEF TAB  &kp LSHIFT     &kp SPACE &lt RIG TAB
+            &kp Q  &kp W       &kp E        &kp R        &kp T         &kp Y      &kp U        &kp I        &kp O       &kp P
+            &kp A  &ht LALT S  &ht LGUI D   &ht LCTRL F  &kp G         &kp H      &ht RCTRL J  &ht RGUI K   &ht RALT L  &kp SEMI
+            &kp Z  &kp X       &kp C        &kp V        &kp B         &kp N      &kp M        &kp COMMA    &kp DOT     &kp FSLH
+                               &kp LSHIFT   &lt LEF SPACE              &lt RIG RET &kp BSPC
             >;
         };
 
-        right_layer {
-            display-name = "NUM & NAVIGATION";
+        lower_layer {
+            display-name = "Lower (Nav/Num)";
             bindings = <
-            &kp N1   &kp N2    &kp N3     &kp N4   &kp N5     &kp N6  &kp N7    &kp N8     &kp N9     &kp N0
-            &kp DEL  &kp CAPS  &kp PSCRN  &kp INS  &trans     &kp LEFT  &kp DOWN   &kp UP  &kp RIGHT &trans
-            &trans   &trans    &trans     &trans   &trans     &kp HOME  &kp PG_DN  &kp PG_UP  &kp END &bootloader
-            &trans   &kp ESC    &trans  &trans
+            &kp PSCRN       &kp INS        &kp UP         &kp PG_UP      &kp PRCNT       &kp KP_SLASH   &kp N7  &kp N8  &kp N9  &kp KP_MINUS
+            &kp ESC         &kp LEFT       &kp DOWN       &kp RIGHT      &kp PG_DN       &kp KP_EQUAL   &kp N4  &kp N5  &kp N6  &kp KP_PLUS
+            &out OUT_TOG    &kp C_PREV     &kp C_NEXT     &kp HASH       &kp C_PP        &kp KP_ASTERISK &kp N1  &kp N2  &kp N3  &kp KP_DOT
+                                           &trans         &trans                         &kp N0         &kp BSPC
             >;
         };
 
-        left_layer {
-            display-name = "SYMBOL";
+        raise_layer {
+            display-name = "Raise (Symbols)";
             bindings = <
-            &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp GRAVE  &kp TILDE
-            &kp DQT   &kp LBKT  &kp LBRC  &kp LPAR  &default_report       &kp FSLH   &kp MINUS  &kp EQUAL  &kp COLON  &kp SEMI
-            &kp SQT   &kp RBKT  &kp RBRC  &kp RPAR  &bootloader       &kp BSLH   &kp UNDER  &kp PLUS   &kp PIPE   &kp QMARK
-            &trans    &trans       &tog MOUSE     &trans
+            &kp GRAVE       &kp TILDE      &kp LT         &kp GT         &kp QMARK       &kp ASTRK      &kp LBRC  &kp RBRC  &kp HOME   &kp END
+            &kp EXCL        &kp AT         &kp HASH       &kp DLLR       &kp PRCNT       &kp UNDER      &kp LPAR  &kp RPAR  &kp SQT    &kp DQT
+            &kp EQUAL       &kp MINUS      &kp PLUS       &kp AMPS       &kp PIPE        &kp CARET      &kp LBKT  &kp RBKT  &kp COLON  &kp BSLH
+                                           &trans         &trans                         &trans         &trans
             >;
         };
 
         tri_layer {
-            display-name = "FUNC";
+            display-name = "Func / BT";
             bindings = <
-            &kp F1  &kp F2   &kp F3   &kp F4   &bt BT_SEL 0    &bt BT_SEL 2  &out OUT_TOG   &tog WIN  &kp C_MUTE    &kp C_PREV
-            &kp F5  &kp F6   &kp F7   &kp F8   &bt BT_SEL 1    &bt BT_SEL 3  &kp C_BRI_UP   &studio_unlock    &kp C_VOL_UP  &kp C_PP
-            &kp F9  &kp F10  &kp F11  &kp F12  &bt BT_CLR      &bt BT_SEL 4  &kp C_BRI_DEC  &soft_off    &kp C_VOL_DN  &kp C_NEXT
-            &trans   &trans          &trans        &trans
+            &kp F1          &kp F2         &kp F3         &kp F4         &bt BT_SEL 0    &bt BT_SEL 2   &out OUT_TOG   &tog WIN       &kp C_MUTE    &kp C_PREV
+            &kp F5          &kp F6         &kp F7         &kp F8         &bt BT_SEL 1    &bt BT_SEL 3   &kp C_BRI_UP   &studio_unlock &kp C_VOL_UP  &kp C_PP
+            &kp F9          &kp F10        &kp F11        &kp F12        &bt BT_CLR      &bt BT_SEL 4   &kp C_BRI_DEC  &soft_off      &kp C_VOL_DN  &kp C_NEXT
+                                           &bootloader    &trans                         &tog MOUSE     &bootloader
             >;
         };
+
         mouse {
-            display-name = "MOUSE";
+            display-name = "Mouse";
             bindings = <
-            &tog MOUSE  &mkp MB4  &mkp MCLK  &mkp MB5   &trans      &msc SCRL_LEFT     &msc SCRL_DOWN    &msc SCRL_UP     &msc SCRL_RIGHT    &tog MOUSE
-            &trans      &trans    &trans     &trans     &trans      &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_UP     &mmv MOVE_RIGHT    &trans
-            &trans      &trans    &trans     &trans     &trans      &trans     &mkp MB4  &mkp MCLK  &mkp MB5  &trans
-            &kp SPACE  &kp LSHIFT  &mkp LCLK  &mkp RCLK
+            &tog MOUSE  &mkp MB4    &mkp MCLK   &mkp MB5    &trans        &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &tog MOUSE
+            &trans      &trans      &trans      &trans      &trans        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
+            &trans      &trans      &trans      &trans      &trans        &trans          &mkp MB4        &mkp MCLK     &mkp MB5         &trans
+                                    &kp SPACE   &kp LSHIFT                &mkp LCLK       &mkp RCLK
             >;
         };
     };
